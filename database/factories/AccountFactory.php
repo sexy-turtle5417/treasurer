@@ -17,7 +17,8 @@ class AccountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "name" => fake()->text(50),
+            "description" => fake()->realText(60)
         ];
     }
 }
