@@ -40,7 +40,7 @@ class UserController extends Controller
 
         $user->save();
         return to_route('login')
-            ->with('on_create', $user->email);
+            ->with('new_user_email', $user->email);
     }
 
     /**

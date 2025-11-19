@@ -15,8 +15,17 @@
         </div>
         <div class="flex-1 grid place-items-center">
             <div class="p-10 bg-base-300 shadow w-2/3">
-                <form action="">
+                <form action="{{ route('authenticate') }}" method="POST">
                     @csrf
+                    @if ($email = session('new_user_email'))
+                        <div class="mb-6">
+                            <div class="alert alert-info rounded-none text-xs font-medium">
+                                <x-info-icon></x-info-icon>
+                                <span>User with email '{{ $email }}' has been created!</span>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="flex flex-col gap-2">
                         <x-input name="email" id="email">
                             <label for="email" class=" font-medium text-info text-xs">SIGN IN WITH EMAIL</label>
