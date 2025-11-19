@@ -11,6 +11,12 @@
 
 <body>
     {{ $slot }}
+    <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+        <aside>
+            <p class="font-medium text-xs">Copyright © {{ date('Y') }} - All right reserved by Zulieta Industries
+            </p>
+        </aside>
+    </footer>
 </body>
 
 </html>

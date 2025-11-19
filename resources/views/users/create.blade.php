@@ -34,8 +34,8 @@
 
                 @if ($userCount > 0)
                     <div class="mt-6">
-                        <p class="text-xs font-medium text-center">Already have an account? Sign in <a href=""
-                                class="link link-info">
+                        <p class="text-xs font-medium text-center">Already have an account? Sign in <a
+                                href="{{ route('login') }}" class="link link-info">
                                 here</a>.</p>
                     </div>
                 @endif

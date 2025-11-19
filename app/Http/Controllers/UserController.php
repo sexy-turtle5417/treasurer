@@ -39,6 +39,8 @@ class UserController extends Controller
             $user->is_admin = true;
 
         $user->save();
+        return to_route('login')
+            ->with('on_create', $user->email);
     }
 
     /**
