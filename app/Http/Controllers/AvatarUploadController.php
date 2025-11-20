@@ -10,7 +10,7 @@ class AvatarUploadController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function update(Request $request)
     {
         $request->validate([
             'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'], // Max 2MB
@@ -33,4 +33,6 @@ class AvatarUploadController extends Controller
 
         return redirect()->back()->with('success', 'Avatar uploaded successfully!');
     }
+
+    public function edit(Request $request) {}
 }

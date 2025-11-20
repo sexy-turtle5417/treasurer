@@ -6,8 +6,11 @@ use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::put('/users/avatar', AvatarUploadController::class)
-    ->name('avatar-upload');
+Route::put('/avatar', [AvatarUploadController::class, 'update'])
+    ->name('avatar.update');
+
+Route::get('/avatar', [AvatarUploadController::class], 'edit')
+    ->name('avatar.edit');
 
 Route::get('/login', [LogInController::class, 'form'])
     ->name('login');
