@@ -2,7 +2,19 @@
     <x-navbar></x-navbar>
     <div class="min-h-screen place-items-center">
 
+
         <div class="min-w-1/2 mt-20">
+            @if ($message = session('success'))
+                <div role="alert" class="alert alert-success text-xs font-medium p-2 rounded-none mb-3 shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ $message }}</span>
+                </div>
+            @endif
+
             <div class="flex gap-3">
                 <div>
                     <div class="bg-base-300 shadow p-6 grid place-items-center flex-1">
@@ -20,10 +32,10 @@
                                     </div>
                                 </div>
                             @endif
-
                         </div>
                         <div class="mt-3">
-                            <a href="" class="text-xs link link-info font-medium"> CHANGE PHOTO </a>
+                            <a href="{{ route('avatar.edit') }}" class="text-xs link link-info font-medium"> CHANGE
+                                PHOTO </a>
                         </div>
                     </div>
                 </div>

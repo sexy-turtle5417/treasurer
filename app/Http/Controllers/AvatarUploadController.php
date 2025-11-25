@@ -31,8 +31,13 @@ class AvatarUploadController extends Controller
             'avatar' => $path,
         ]);
 
-        return redirect()->back()->with('success', 'Avatar uploaded successfully!');
+        // return redirect()->back()->with('success', 'Avatar uploaded successfully!');
+        return to_route('users.show', [$user->id])
+            ->with('success', 'Avatar uploaded successfully');
     }
 
-    public function edit(Request $request) {}
+    public function edit()
+    {
+        return view('avatar.edit');
+    }
 }

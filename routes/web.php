@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::put('/avatar', [AvatarUploadController::class, 'update'])
     ->name('avatar.update');
 
-Route::get('/avatar', [AvatarUploadController::class], 'edit')
+Route::get('/avatar/edit', [AvatarUploadController::class, 'edit'])
     ->name('avatar.edit');
 
 Route::get('/login', [LogInController::class, 'form'])
