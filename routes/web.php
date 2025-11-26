@@ -6,24 +6,29 @@ use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::put('/avatar', [AvatarUploadController::class, 'update'])
-    ->name('avatar.update');
+Route::resource('users', UserController::class)
+    ->only(['create', 'store']);
 
-Route::get('/avatar/edit', [AvatarUploadController::class, 'edit'])
-    ->name('avatar.edit');
+Route::middleware('auth')->group(function () {
+    Route::put('/avatar', [AvatarUploadController::class, 'update'])
+        ->name('avatar.update');
+
+    Route::get('/avatar/edit', [AvatarUploadController::class, 'edit'])
+        ->name('avatar.edit');
+
+    Route::delete('/logout', LogOutController::class)
+        ->name('logout');
+
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
+    Route::resource('users', UserController::class)
+        ->except(['create', 'store']);
+});
 
 Route::get('/login', [LogInController::class, 'form'])
     ->name('login');
 
 Route::post('/login', [LogInController::class, 'authenticate'])
     ->name('authenticate');
-
-Route::delete('/logout', LogOutController::class)
-    ->name('logout');
-
-Route::resource('users', UserController::class);
-
-Route::get('/', function () {
-    return view('welcome');
-})->name('home')
-    ->middleware('auth');
